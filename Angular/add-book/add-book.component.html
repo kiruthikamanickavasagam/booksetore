@@ -1,0 +1,84 @@
+<div class="container" style="border-radius: 5px; background-color: #f2f2f2; padding: 10px">
+  <!--Code to diaplay the title and buttons-->
+    <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4" style="width: 30rem; height: 5rem;">
+      <h3><span style="font-weight:bold">Books Store</span></h3>
+    </div>
+    <div class="col-sm-2">
+      <button type=button class="btn btn-primary">Add Book</button>
+    </div>
+    <div class="col"></div>
+    <div class="col-sm-2">
+      <a routerLink="/get-books">
+        <button type=button class="btn btn-primary">Get Book</button>
+      </a>
+    </div>
+  </div>
+  <div *ngIf='status.code=="Success" '><h3>{{status.description}}</h3></div>
+  <form method="post" (ngSubmit)="onSubmit()" #bookForm="ngForm">
+    <!--Title-->
+    <div class="form-group row">
+      <div class="col-sm-4">
+        <label for="title">Title</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <input type="text" class="form-control" id="title" placeholder="Email" required [(ngModel)]="model.title"
+          name="title" #title="ngModel" placeholder="Title">
+        <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+          Title is required
+        </div>
+      </div>
+    </div>
+    <!--Author-->
+    <div class="form-group row">
+      <div class="col-sm-4 ">
+        <label for="author">Author</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-12">
+        <input type="text" class="form-control" id="author" required [(ngModel)]="model.author" name="author"
+          #author="ngModel" placeholder="Author">
+        <div [hidden]="author.valid || author.pristine" class="alert alert-danger">
+          Author is required
+        </div>
+      </div>
+    </div>
+    <!--Price,Published labels-->
+    <div class="form-group row">
+      <div class="col-sm-4">
+        <label for="price">Price</label>
+      </div>
+      <div class="col-sm-4">
+        <label for="published">Published On</label>
+      </div>
+    </div>
+    <!--Price,Published input-->
+    <div class="form-group row">
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="price" required [(ngModel)]="model.price" name="price"
+          #price="ngModel" placeholder="Price">
+        <div [hidden]="price.valid || price.pristine" class="alert alert-danger">
+          Price is required
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <input type="date" class="form-control" id="published" required [(ngModel)]="model.published" name="published"
+          #published="ngModel" placeholder="Published On">
+        <div [hidden]="published.valid || published.pristine" class="alert alert-danger">
+          Published Date is required
+        </div>
+      </div>
+    </div>
+    <!--Submit Button-->
+    <div class="form-group row">
+      <div class="col-sm-10 offset-sm-2">
+        <button id="submitbutton" type="submit" class="btn btn-primary" onsubmit="myFunction()">
+          Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
